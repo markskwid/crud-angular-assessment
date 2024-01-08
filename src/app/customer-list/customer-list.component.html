@@ -1,0 +1,44 @@
+<ul
+  class="w-full py-2 flex flex-col md:flex-row lg:flex-row justify-start items-center flex-wrap gap-4 mt-2"
+>
+  <ng-container *ngFor="let customer of data">
+    <li
+      class="w-full md:w-[48.2%] lg:w-[19.3em] border border-slate-500 p-3 rounded-md relative hover:drop-shadow-md transition-all"
+    >
+      <button
+        class="absolute right-12"
+        (click)="handleEdit(customer)"
+        aria-label="Edit customer"
+      >
+        <img
+          src="/assets/images/mode_edit.svg"
+          alt="edit-button"
+          class="h-auto w-6"
+        />
+      </button>
+
+      <button
+        class="absolute right-3"
+        (click)="handleDelete(customer.id)"
+        aria-label="Delete customer"
+      >
+        <img
+          src="/assets/images/delete_outline.svg"
+          alt="edit-button"
+          class="h-auto w-6"
+        />
+      </button>
+
+      <a
+        [routerLink]="['user', customer.id]"
+        class="font-semibold text-lg underline"
+        >{{ customer.name }}</a
+      >
+
+      <p class="text-slate-600 my-2 text-sm">{{ customer.email }}</p>
+      <p class="text-slate-600 text-sm">
+        {{ customer.contact | formatNumber }}
+      </p>
+    </li>
+  </ng-container>
+</ul>

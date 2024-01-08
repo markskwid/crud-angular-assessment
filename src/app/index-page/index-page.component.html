@@ -1,0 +1,84 @@
+<div class="w-full py-2">
+  <h1 class="font-bold text-xl mb-2">Customer Information</h1>
+
+  <div
+    class="w-full flex flex-col lg:flex-row justify-between items-start py-2"
+  >
+    <p class="lg:w-96 text-slate-700 text-sm">
+      Your list of customers appears here. To add a new customer, click on the
+      Add New Customer button.
+    </p>
+
+    <button
+      (click)="openModal()"
+      class="rounded-full w-35 bg-purple-600 hover:bg-purple-700 px-5 py-2 text-white transition-all mt-2 lg:mt-0"
+      aria-label="Add new customer"
+    >
+      Add New Customer
+    </button>
+  </div>
+
+  <div class="w-full text-end flex justify-end items-center mt-2">
+    <button (click)="setTable()" class="mr-2">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M3 3V11H11V3H3ZM9 9H5V5H9V9ZM3 13V21H11V13H3ZM9 19H5V15H9V19ZM13 3V11H21V3H13ZM19 9H15V5H19V9ZM13 13V21H21V13H13ZM19 19H15V15H19V19Z"
+          [attr.fill]="displayStyle ? 'black' : 'grey'"
+        />
+      </svg>
+    </button>
+
+    <button (click)="setGrid()" [disabled]="(data$ | async).length < 1">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="black"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_1_4001)">
+          <g clip-path="url(#clip1_1_4001)">
+            <path
+              d="M21 8H3V4H21V8ZM21 10H3V14H21V10ZM21 16H3V20H21V16Z"
+              [attr.fill]="displayStyle ? 'grey' : 'black'"
+            />
+          </g>
+        </g>
+        <defs>
+          <clipPath id="clip0_1_4001">
+            <rect width="24" height="24" fill="white" />
+          </clipPath>
+          <clipPath id="clip1_1_4001">
+            <rect width="24" height="24" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </button>
+  </div>
+
+  <ng-container *ngIf="displayStyle; else tableStyle">
+    <app-grid-display [data]="data$ | async"></app-grid-display>
+  </ng-container>
+
+  <ng-template #tableStyle>
+    <app-table-display
+      [data]="data$ | async"
+      [tableHead]="['Name', 'Email', 'Contact', 'Actions']"
+    ></app-table-display>
+  </ng-template>
+
+  <p *ngIf="(data$ | async).length < 1" class="font-bold text-slate-600">
+    No item is available
+  </p>
+
+  <app-modal></app-modal>
+  <app-custom-toast></app-custom-toast>
+</div>

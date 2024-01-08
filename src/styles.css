@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .toast {
+    @apply absolute w-auto right-5 bottom-5 bg-green-400 px-2 py-1 rounded-lg text-start;
+  }
+
+  .error-toast {
+    @apply absolute w-auto right-5 bottom-5 bg-red-400 px-2 py-1 rounded-lg text-start;
+  }
+}
+
+@layer base {
+  body {
+    @apply min-h-screen bg-gray-100 lg:px-40 lg:py-8 px-5 py-5 relative;
+  }
+}

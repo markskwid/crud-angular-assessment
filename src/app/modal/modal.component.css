@@ -1,0 +1,19 @@
+.error-message {
+  @apply text-red-400 text-sm;
+}
+
+.valid-input {
+  @apply w-full border border-slate-500 outline-none ring-slate-500 p-2 rounded-md mt-1 mb-1 focus:ring focus:border-none focus:ring-slate-400;
+}
+
+.error-input {
+  @apply w-full border border-red-500 outline-none ring-red-500 p-2 rounded-md mt-1 mb-1 focus:ring focus:border-none focus:ring-red-400;
+}
+
+.enabled-button {
+  @apply bg-purple-500 w-52 text-white rounded-full p-2 transition-all;
+}
+
+.disabled-button {
+  @apply bg-slate-500 w-52 text-white rounded-full p-2;
+}

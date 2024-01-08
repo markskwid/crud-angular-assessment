@@ -1,0 +1,110 @@
+<div
+  class="absolute min-h-screen w-full bg-slate-500/50 flex justify-center items-center top-0 right-0 z-10"
+  *ngIf="isModalOpen"
+  (click)="closeModal()"
+>
+  <div
+    class="w-96 h-auto px-5 py-5 bg-white drop-shadow-md rounded-lg flex flex-col justify-start z-10"
+  >
+    <form
+      [formGroup]="myForm"
+      (submit)="onSubmit()"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="w-full mb-2">
+        <label for="name" class="font-semibold">Name</label>
+        <input
+          type="text"
+          [ngClass]="
+            isSubmitted && myForm.get('name').errors
+              ? 'error-input'
+              : 'valid-input'
+          "
+          name="name"
+          formControlName="name"
+        />
+        <span
+          *ngIf="isSubmitted && myForm.get('name').errors"
+          class="error-message"
+        >
+          <span *ngIf="myForm.get('name').errors['required']"
+            >Please enter a name!</span
+          >
+          <span *ngIf="myForm.get('name').errors['pattern']"
+            >Enter valid name!</span
+          >
+        </span>
+      </div>
+      <div class="w-full mb-2">
+        <label for="name" class="font-semibold">Email Address</label>
+        <input
+          type="email"
+          [ngClass]="
+            isSubmitted && myForm.get('email').errors
+              ? 'error-input'
+              : 'valid-input'
+          "
+          formControlName="email"
+        />
+        <span
+          *ngIf="isSubmitted && myForm.get('email').errors"
+          class="error-message"
+        >
+          <span *ngIf="myForm.get('email').errors['required']"
+            >Please enter an email!</span
+          >
+          <span *ngIf="myForm.get('email').errors['pattern']"
+            >Enter valid email!</span
+          >
+        </span>
+      </div>
+      <div class="w-full mb-2">
+        <label for="name" class="font-semibold">Contact Number</label>
+        <input
+          type="text"
+          [ngClass]="
+            myForm.get('contact').errors && isSubmitted
+              ? 'error-input'
+              : 'valid-input'
+          "
+          name="contact"
+          formControlName="contact"
+        />
+        <span
+          *ngIf="isSubmitted && myForm.get('contact').errors"
+          class="error-message"
+        >
+          <span *ngIf="myForm.get('contact').errors['required']"
+            >Please enter an contact!</span
+          >
+          <span *ngIf="myForm.get('contact').errors['pattern']"
+            >Enter valid contact!</span
+          >
+        </span>
+      </div>
+      <div class="w-full flex mt-4 justify-between mb-2">
+        <button
+          type="button"
+          class="border-2 border-purple-400 w-32 rounded-full p-2"
+          (click)="closeModal()"
+          aria-label="Cancel"
+        >
+          Cancel
+        </button>
+
+        <button
+          [ngClass]="
+            (isEdit && !myForm.dirty) || !myForm.valid
+              ? 'disabled-button'
+              : 'enabled-button'
+          "
+          type="submit"
+          [attr.aria-label]="isEdit ? 'Save Changes' : 'Add New Customer'"
+          [disabled]="isEdit && !myForm.dirty"
+        >
+          {{ isEdit ? "Save Changes" : "Add New Customer" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

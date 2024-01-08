@@ -1,0 +1,55 @@
+<div class="w-full overflow-y-auto">
+  <table class="w-full table-auto border mt-2">
+    <thead class="bg-purple-600">
+      <tr>
+        <th
+          *ngFor="let title of tableHead"
+          class="border border-slate-800 text-white text-start p-2"
+        >
+          {{ title }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let customer of data">
+        <tr class="hover:bg-gray-300 transition-all">
+          <td class="text-sm underline border border-slate-800 p-2">
+            <a [routerLink]="['user', customer.id]">{{ customer.name }}</a>
+          </td>
+          <td class="text-sm border border-slate-800 p-2">
+            {{ customer.email }}
+          </td>
+          <td class="text-sm border border-slate-800 p-2">
+            {{ customer.contact | formatNumber }}
+          </td>
+          <td class="border border-slate-800 text-center" aria-hidden="true">
+            <button
+              type="button"
+              class="mr-3"
+              aria-label="Edit customer"
+              (click)="handleEdit(customer)"
+            >
+              <img
+                src="/assets/images/mode_edit.svg"
+                alt="edit-button"
+                class="h-auto w-5"
+              />
+            </button>
+            <button
+              type="button"
+              class="mr-2"
+              aria-label="Delete customer"
+              (click)="handleDelete(customer.id)"
+            >
+              <img
+                src="/assets/images/delete_outline.svg"
+                alt="edit-button"
+                class="h-auto w-5"
+              />
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
