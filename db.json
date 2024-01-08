@@ -1,22 +1,10 @@
 {
   "users": [
     {
-      "name": "Mark Ponce",
-      "email": "mark.ponce.bascal@accenture.com",
-      "contact": "09061128902",
+      "name": "Juan D. Cruz",
+      "email": "jdc@gmail.com",
+      "contact": "09072228902",
       "id": "c4caac08-2650-4861-bfad-b061d8e98fdd"
-    },
-    {
-      "name": "Mejelle De Belen",
-      "email": "meje123@gmail.com",
-      "contact": "09503598634",
-      "id": "01e1deeb-10ba-448c-9a1e-e25ea6eaf302"
-    },
-    {
-      "name": "Mejelle De Belen",
-      "email": "mejelle@gmail.com",
-      "contact": "09503598634",
-      "id": "3775a075-db83-42a7-bce5-15cf437347fa"
     }
   ]
 }
